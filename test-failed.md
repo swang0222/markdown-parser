@@ -1,1 +1,4 @@
-This test file contains no link.
+# Title
+
+![link1](victorwu.com/)
+[link2](victorwu.com2/)
