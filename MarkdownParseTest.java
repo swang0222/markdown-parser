@@ -18,7 +18,7 @@ public class MarkdownParseTest {
     @Test
     public void getLinks() throws IOException {
         List<String> String = List.of("https://something.com", "some-thing.html");
-        Path file = Path.of("C:/Users/trisl/OneDrive/Documents/GitHub/markdown-parser/test.md");
+        Path file = Path.of("test.md");
         ArrayList<String> list = MarkdownParse.getLinks(Files.readString(file));
         assertEquals(String, list);
     }
