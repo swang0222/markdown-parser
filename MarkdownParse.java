@@ -15,7 +15,7 @@ public class MarkdownParse {
         if (!markdown.contains("[") && !markdown.contains("]") || !markdown.contains(".com")) {
             return toReturn;
         }
-        while (currentIndex < markdown.length()) {
+        while (currentIndex < markdown.lastIndexOf(")")) {
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
