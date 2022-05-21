@@ -16,18 +16,35 @@ public class MarkdownParse {
                 || (!markdown.contains(".com") && !markdown.contains(".net"))) {
             return toReturn;
         }
+        // outerloop:
         while (currentIndex < markdown.lastIndexOf(")")) {
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            if (markdown.indexOf("!") + 1 == openBracket) {
-                return toReturn;
+            if (markdown.indexOf("!") + 1 == openBracket || openBracket - 1 == markdown.indexOf("`")) {
+                currentIndex = closeParen;
+                continue;
+            }
+            if (markdown.charAt(openParen - 1) == ']' && markdown.charAt(openParen - 2) == '`'
+                    && markdown.charAt(openBracket + 1) == '`') {
+                closeBracket = openParen - 1;
             }
             if (openParen == closeParen || openParen != closeBracket + 1) {
                 return toReturn;
             }
+            // for (int i = openParen; i < closeParen; i++) {
+            // if (markdown.charAt(i) == ' ') {
+            // currentIndex = closeParen;
+            // continue outerloop;
+            // }
+            // }
+            // if (markdown.substring(openParen + 1, closeParen).contains("\n")) {
+            // toReturn.add(markdown.substring(openParen + 1, closeParen).replaceAll("\n",
+            // ""));
+            // } else {
             toReturn.add(markdown.substring(openParen + 1, closeParen));
+            // }
             currentIndex = closeParen + 1;
         }
         return toReturn;
