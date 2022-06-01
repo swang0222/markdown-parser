@@ -80,7 +80,12 @@ public class ProvidedMarkdownParse {
                 currentIndex = currentIndex + 1;
             }
         }
-        return toReturn;
+        if (toReturn.size() > 0) {
+            return toReturn;
+        } else {
+            return null;
+        }
+        
     }
 
     public static void main(String[] args) throws IOException {
