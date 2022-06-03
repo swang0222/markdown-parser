@@ -33,18 +33,7 @@ public class MarkdownParse {
             if (openParen == closeParen || openParen != closeBracket + 1) {
                 return toReturn;
             }
-            // for (int i = openParen; i < closeParen; i++) {
-            // if (markdown.charAt(i) == ' ') {
-            // currentIndex = closeParen;
-            // continue outerloop;
-            // }
-            // }
-            // if (markdown.substring(openParen + 1, closeParen).contains("\n")) {
-            // toReturn.add(markdown.substring(openParen + 1, closeParen).replaceAll("\n",
-            // ""));
-            // } else {
             toReturn.add(markdown.substring(openParen + 1, closeParen));
-            // }
             currentIndex = closeParen + 1;
         }
         return toReturn;
